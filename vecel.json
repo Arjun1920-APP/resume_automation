@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "functions": {
+    "run_cron.py": {
+      "runtime": "python3.11"
+    }
+  },
+  "crons": [
+    {
+      "path": "/run_cron.py",
+      "schedule": "0 9 * * *"  
+    }
+  ]
+}
