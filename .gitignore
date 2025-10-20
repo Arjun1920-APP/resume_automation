@@ -1,0 +1,15 @@
+# Environment variables
+.env
+
+# Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Excel / CV files (optional if you don't want to push local files)
+CVs/
+CV_Tracker.xlsx
+Processed_Emails.xlsx
+
+credentials.json
+token.json

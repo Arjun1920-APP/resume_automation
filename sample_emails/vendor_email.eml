@@ -1,0 +1,43 @@
+From: vendor@abc.com
+To: rajvi.sharma@ambit.co
+Subject: Profiles for Analyst Role
+Date: Mon, 1 Sep 2025 12:30:00 +0530
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="ABC123"
+
+--ABC123
+Content-Type: text/plain; charset="UTF-8"
+
+Dear Team,
+
+Please find attached multiple candidate profiles for Analyst position.
+
+Candidate Name: Rahul Shah
+Candidate Email: rahul.shah@gmail.com
+Current Organization: Infosys
+Phone: 9876543210
+
+Candidate Name: Neha Mehta
+Candidate Email: neha.mehta@gmail.com
+Current Organization: TCS
+Phone: 9123456789
+
+Regards,
+Vendor HR
+vendor@abc.com
+
+--ABC123
+Content-Type: application/pdf; name="Rahul_Shah_CV.pdf"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Rahul_Shah_CV.pdf"
+
+JVBERi0xLjQKJcfs...FAKEPDFCONTENT...0RU9GCg==
+
+--ABC123
+Content-Type: application/pdf; name="Neha_Mehta_CV.pdf"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Neha_Mehta_CV.pdf"
+
+JVBERi0xLjQKJcfs...FAKEPDFCONTENT...0RU9GCg==
+
+--ABC123--

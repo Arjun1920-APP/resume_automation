@@ -1,0 +1,30 @@
+From: employee@ambit.co
+To: rajvi.sharma@ambit.co
+Subject: Referral – Harsh Mishra
+Date: Tue, 2 Sep 2025 10:10:00 +0530
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="DEF456"
+
+--DEF456
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Rajvi,
+
+Please find resume of Harsh Mishra (Referral).
+
+Candidate Name: Harsh Mishra
+Email: harsh.mishra@gmail.com
+Phone: 9998887776
+
+Regards,
+Employee Referrer
+employee@ambit.co
+
+--DEF456
+Content-Type: application/pdf; name="Harsh_Mishra_CV.pdf"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Harsh_Mishra_CV.pdf"
+
+JVBERi0xLjQKJcfs...FAKEPDFCONTENT...0RU9GCg==
+
+--DEF456--

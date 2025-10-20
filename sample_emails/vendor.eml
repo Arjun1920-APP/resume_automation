@@ -1,0 +1,25 @@
+From: vendor@abc.com
+To: rajvi.sharma@ambit.co
+Subject: Vendor submission - Candidate for Analyst
+Date: Mon, 1 Sep 2025 12:30:00 +0530
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="XYZ"
+
+--XYZ
+Content-Type: text/plain; charset="UTF-8"
+
+Hi Team,
+
+Please find attached candidate profile for Analyst role.
+
+Regards,
+Vendor Team
+
+--XYZ
+Content-Type: application/pdf; name="resume_vendor.pdf"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="resume_vendor.pdf"
+
+JVBERi0xLjQKJcfs...FAKEPDFCONTENT...0RU9GCg==
+
+--XYZ--
