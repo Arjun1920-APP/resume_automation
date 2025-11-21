@@ -15,7 +15,8 @@ from datetime import datetime, timedelta
 from dotenv import load_dotenv
 import pandas as pd
 from openpyxl import load_workbook
-
+import json
+from google.auth.transport.requests import Request
 # Google Drive
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -79,19 +80,34 @@ def build_mail_url_from_message_id(message_id):
 # Google Drive helpers (OAuth InstalledAppFlow)
 # -----------------------------
 def get_drive_service():
-    """Return Google Drive service (will open browser for OAuth on first run)."""
     creds = None
-    if os.path.exists("token.json"):
-        try:
-            creds = Credentials.from_authorized_user_file("token.json", SCOPES)
-        except Exception:
-            creds = None
+
+    # load token from env (you already did this for token.json)
+    token_json = os.getenv("DRIVE_TOKEN_JSON")
+    if token_json:
+        creds_data = json.loads(token_json)
+        creds = Credentials.from_authorized_user_info(creds_data)
+
+    # If creds not valid or expired, refresh or do OAuth flow
     if not creds or not creds.valid:
-        flow = InstalledAppFlow.from_client_secrets_file("credentials.json", SCOPES)
-        creds = flow.run_local_server(port=0)
-        with open("token.json", "w") as f:
-            f.write(creds.to_json())
-    return build("drive", "v3", credentials=creds)
+        if creds and creds.expired and creds.refresh_token:
+            creds.refresh(Request())
+        else:
+            # Load credentials from env instead of file
+            credentials_json = os.getenv("GMAIL_CREDENTIALS_JSON")
+            credentials_data = json.loads(credentials_json)
+            flow = InstalledAppFlow.from_client_config(
+                credentials_data,
+                scopes=["https://www.googleapis.com/auth/drive.file"]
+            )
+            creds = flow.run_local_server(port=0)
+
+            # save new token to env is not possible dynamically, so save locally if needed
+            with open('token.json', 'w') as token_file:
+                token_file.write(creds.to_json())
+
+    service = build('drive', 'v3', credentials=creds)
+    return service
 
 def find_folder(service, name, parent_id=None):
     """Find Drive folder by name (optionally under parent). Returns file dict or None."""
@@ -742,7 +758,7 @@ def process_imap_and_upload_to_drive(force=False, days=1):
             subj = decode_mime_words(msg.get("Subject", ""))
             
             # Skip messages that are likely replies or forwards
-            if subj.lower().startswith("re:") or subj.lower().startswith("fwd:"):
+            if subj.lower().startswith("re:") or subj.lower().startswith("fwd:") or subj.lower().startswith("fw:"):
                 print(f"Message ID: {message_id} >> Skipped (reply/forward detected in subject)")
                 continue
 
